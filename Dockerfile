@@ -10,7 +10,7 @@ ARG VERSION
 
 COPY ./stage-extensions/ /etc/kairos-init/stage-extensions/
 
-RUN --mount=type=bind,from=kairos-init,src=/kairos-init,dst=/kairos-init /kairos-init --version "${VERSION}" -m rpi4 -k "${KUBERNETES_DISTRO}" --k8sversion "${KUBERNETES_VERSION}" -x
+RUN --mount=type=bind,from=kairos-init,src=/kairos-init,dst=/kairos-init /kairos-init --version "${VERSION}" -m rpi4 -k "${KUBERNETES_DISTRO}" --k8sversion "${KUBERNETES_VERSION}"
 
 
 # RUN --mount=type=bind,from=kairos-init,src=/kairos-init,dst=/kairos-init \
