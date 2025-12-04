@@ -1,5 +1,17 @@
 stages:
   after-install:
+    - files:
+        - path: /etc/zypp/repos.d/repo-filesystems
+          owner: 0
+          group: 0
+          content: |
+            [filesystems_ceph]
+            name=The Ceph distributed storage system (16.0)
+            type=rpm-md
+            baseurl=https://download.opensuse.org/repositories/filesystems:/ceph/16.0/
+            gpgcheck=1
+            gpgkey=https://download.opensuse.org/repositories/filesystems:/ceph/16.0/repodata/repomd.xml.key
+            enabled=1
     - packages:
         install:
           - "ceph"
