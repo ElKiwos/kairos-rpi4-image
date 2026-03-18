@@ -1,6 +1,6 @@
 ARG BASEIMAGE
 
-FROM quay.io/kairos/kairos-init:v0.5.29 AS kairos-init
+FROM quay.io/kairos/kairos-init:v0.7.4 AS kairos-init
 
 FROM ${BASEIMAGE}
 
@@ -10,7 +10,7 @@ ARG VERSION
 
 COPY ./stage-extensions/ /etc/kairos-init/stage-extensions/
 
-RUN --mount=type=bind,from=kairos-init,src=/kairos-init,dst=/kairos-init /kairos-init --version "${VERSION}" -m rpi4 -k "${KUBERNETES_DISTRO}" --k8sversion "${KUBERNETES_VERSION}"
+RUN --mount=type=bind,from=kairos-init,src=/kairos-init,dst=/kairos-init /kairos-init -v "${VERSION}" -m rpi4 --provider "${KUBERNETES_DISTRO}" --provider-${KUBERNETES_DISTRO}-version "${KUBERNETES_VERSION}"
 
 
 # RUN --mount=type=bind,from=kairos-init,src=/kairos-init,dst=/kairos-init \
