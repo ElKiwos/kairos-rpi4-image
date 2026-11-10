@@ -2,6 +2,10 @@ on:
   workflow_call:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,6 +43,7 @@ jobs:
             org.opencontainers.image.version.baseimage=${{ steps.read_env.outputs.BASEIMAGE }}
           flavor: |
             latest=auto
+            prefix=tumbleweed-
       #
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v4
