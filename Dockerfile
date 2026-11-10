@@ -1,6 +1,6 @@
 ARG BASEIMAGE
 
-FROM quay.io/kairos/kairos-init:v0.7.4 AS kairos-init
+FROM quay.io/kairos/kairos-init:v0.8.14 AS kairos-init
 
 FROM ${BASEIMAGE}
 
